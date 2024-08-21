@@ -137,6 +137,12 @@ public class OracleContainer extends JdbcDatabaseContainer<OracleContainer> {
     }
 
     @Override
+    public OracleContainer withStartupTimeoutSeconds(int startupTimeoutSeconds) {
+        this.waitStrategy.withStartupTimeout(Duration.ofSeconds(startupTimeoutSeconds));
+        return super.withStartupTimeoutSeconds(startupTimeoutSeconds);
+    }
+
+    @Override
     public OracleContainer withPassword(String password) {
         if (StringUtils.isEmpty(password)) {
             throw new IllegalArgumentException("Password cannot be null or empty");
