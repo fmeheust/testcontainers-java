@@ -138,14 +138,8 @@ public class OracleContainer extends JdbcDatabaseContainer<OracleContainer> {
 
     @Override
     public OracleContainer withStartupTimeoutSeconds(int startupTimeoutSeconds) {
-        this.startupTimeoutSeconds = startupTimeoutSeconds;
+        this.waitStrategy.withStartupTimeout(Duration.ofSeconds(startupTimeoutSeconds));
         return super.withStartupTimeoutSeconds(startupTimeoutSeconds);
-    }
-
-    @Override
-    public OracleContainer withConnectTimeoutSeconds(int connectTimeoutSeconds) {
-        this.connectTimeoutSeconds = connectTimeoutSeconds;
-        return super.withConnectTimeoutSeconds(connectTimeoutSeconds);
     }
 
     @Override
